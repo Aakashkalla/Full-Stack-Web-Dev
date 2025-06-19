@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounce</title>
+    <style>
+        .container {
+            background-color: blue;
+            width: 50vw;
+            height: 50vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ball {
+            background-color: rgb(255, 77, 0);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            /* Combined animations for horizontal and bounce motion */
+            animation: animation-X 4s linear infinite alternate,
+                       animation-Y 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes animation-X {
+            from {
+                left: 0;
+                background-color: rgb(255, 77, 0);
+            }
+            to {
+                left: 90%;
+                background-color: yellow;
+            }
+        }
+
+        @keyframes animation-Y {
+            from {
+                bottom: 0;
+            }
+            to {
+                bottom: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ball"></div>
+    </div>
+</body>
+</html>
