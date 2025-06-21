@@ -7,7 +7,7 @@
     color: white;
 }
 
-p:last-of-type {
+.last{
   font-size: 0.9rem;
   color: gray;
   margin-top: 2rem;
