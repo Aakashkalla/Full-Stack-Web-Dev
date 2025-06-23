@@ -1,0 +1,11 @@
+let realname ="Aakash";
+let friend ="Aashish";
+console.log(`Hello my name is ${realname} and my friend's name is ${friend}`);
+console.log(realname.toUpperCase());
+console.log(realname.toLowerCase());
+console.log(friend.length);
+console.log(realname.slice(1,5));
+console.log(friend.slice(1));
+console.log(realname.replace("sh","tf"));
+console.log(realname.concat(friend)); 
+console.log(realname.concat(friend, "Shashi")); 
