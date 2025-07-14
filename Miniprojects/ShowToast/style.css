@@ -1,0 +1,40 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#btn{
+    background-color: rgb(39, 39, 112);
+    color:rgb(255, 255, 255);
+    padding:2px;
+    margin:2px;
+    cursor:pointer;
+    width:120px;
+    height:70px;
+}
+#btn:hover{
+    background-color: brown;
+}
+.toast {
+    background-color: black;
+    color: white;
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 6px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    opacity: 0.95;
+    animation: slidein 0.3s ease forwards;
+}
+
+@keyframes slidein {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
