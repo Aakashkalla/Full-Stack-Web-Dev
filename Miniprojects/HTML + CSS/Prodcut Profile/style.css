@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: rgb(186, 190, 188);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 500px;
+    height: 520px;
+    background-color: white;
+    margin: auto;
+    border-radius: 8px;
+    border-style: none;
+    border: 2px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+img {
+    margin: 0 auto;
+    display: block;
+    border-style: none;
+    border-radius: 8px;
+    border: 1px solid white;
+    width: 290px;
+    height: 280px;
+}
+.name-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating {
+  font-size: 14px;
+  color: gray;
+  font-weight: 400;
+}
+
+
+.btn-grp {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-grp button {
+    padding: 0 10px;
+    align-content: center;
+    background-color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    color: rgb(161, 108, 108);
+    border-style: none;
+    border: 1px solid brown;
+}
+
+
+
+.p-2 {
+    margin-top: 30px;
+}
+
+#last-btn {
+    margin-top: 39px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgb(162, 91, 91);
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    padding: 10px 0;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+
+.btn-grp button:hover {
+    background-color: rgb(162, 91, 91);
+    color: white;
+    cursor: pointer;
+}
+
+#last-btn:hover{
+    background-color: rgb(118, 85, 85);
+    color:white;
+    cursor:pointer;
+}
+
+p {
+  font-size: 14px;
+  color: gray;
+}
+
+.btn-grp button,
+#last-btn {
+    transition: all 0.2s ease-in-out;
+}
+
