@@ -1,0 +1,30 @@
+.card {
+    background-color: rgb(13, 9, 40);
+    color: white;
+    padding: 23px;
+    margin: 10px;
+    width: 20vw;
+    min-height: 20vh;
+    border: 2px solid white;
+    text-align: center;
+}
+
+.card p{
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+
+.card h2{
+    flex-shrink:0;
+    margin-bottom: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    flex-shrink: 1;
+    flex-grow: 1;
+    object-fit: contain;
+    display: block;
+    margin-top: auto;
+}

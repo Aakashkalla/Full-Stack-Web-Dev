@@ -1,0 +1,18 @@
+body{
+    background-color:rgb(16, 20, 58);
+    color:white;
+}
+
+nav{
+    background-color: rgb(15, 0, 92);
+    padding:30px;
+}
+
+ul{
+    display: flex;
+    gap:30px;
+}
+
+li{
+    list-style-type: none;
+}
