@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+body{
+  background-color: rgb(53, 25, 156);
+}
+
+button{
+  background-color: rgb(9, 1, 45);
+}
+
+.firstdiv{
+  background-color: rgb(24, 24, 106);
+}
+ 
