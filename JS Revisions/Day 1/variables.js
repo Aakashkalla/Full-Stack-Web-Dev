@@ -4,7 +4,7 @@ let id = 234
 
 /* Prefer not to use var because of issue in functional and block scoping*/
 
-// console.table([name,number,id])
+console.table([name,number,id])
 
 //number => 2 to power 53
 //bigint
@@ -16,8 +16,8 @@ let id = 234
 
 //object
 
-// console.log(typeof null) // ans is object
-// console.log(typeof undefined) // ans is undefined
+console.log(typeof null) // ans is object
+console.log(typeof undefined) // ans is undefined
 
 
 let str1 = "Hello"
