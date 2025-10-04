@@ -1,20 +1,40 @@
 const express = require("express");
-
+const jwt = require('jsonwebtoken');
 const app = express();
-
+const JWT_SECRET = "adabdhaqydbchcvs"; 
 const users = [];
 
 app.use(express.json());
 
 //Return a random long string
-function generateToken(){
-    let options = ['a', 'b', 'c', 'd', 'e', 'f', 'g', '1', '2', '3','4','5','6','7','8'];
-    let token = "";
-    for(let i = 0; i < 30; i++){
-        token += options[Math.floor((Math.random() * options.length))];
+// Token Logic: 
+// function generateToken(){
+//     let options = ['a', 'b', 'c', 'd', 'e', 'f', 'g', '1', '2', '3','4','5','6','7','8'];
+//     let token = "";
+//     for(let i = 0; i < 30; i++){
+//         token += options[Math.floor((Math.random() * options.length))];
+//     }
+//     return token;
+// }
+
+app.get('/me', (req,res)=>{
+    // const token = req.headers.token; (Token ) 
+    const token = req.headers.token; // Will send jwt as a token as well
+    const decodedInfo = jwt.verify(token, JWT_SECRET); // Will return JSON OBJECT : {username : username}
+    const username = decodedInfo.username;
+    const user = users.find(u=>u.username===username);
+    if(user){
+        res.json({
+            username : user.username,
+            password : user.password
+        })
+    }else{
+        res.json({
+            message : "Sorry User Not Found"
+        })
     }
-    return token;
-}
+})
+
 app.post('/signup',(req,res)=>{
     const username = req.body.username;
     const password = req.body.password;
@@ -28,10 +48,6 @@ app.post('/signup',(req,res)=>{
     console.log(users);
 });
 
-app.get('/me', (req,res)=>{
-    const token = req.headers.authorization;
-})
-
 app.post('/signin',(req,res)=>{
     const username = req.body.username;
     const password = req.body.password;
@@ -44,8 +60,10 @@ app.post('/signin',(req,res)=>{
     }
 
     if(foundUser){
-        const token = generateToken();
-        foundUser.token = token;
+        const token = jwt.sign({
+            username : username
+        }, JWT_SECRET);
+        // foundUser.token = token; (Token Storing)
         res.json({
             token : token
         })
