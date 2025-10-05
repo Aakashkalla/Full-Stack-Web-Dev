@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Sign-up an Sign-in</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div>
+        Sign-Up
+        <input id="signup-username" type="text" placeholder="Username" name="username"/>
+        <input id="signup-password" type="password" placeholder="Password" name="password"/>
+        <button onclick="signup()">Sign Up</button>
+    </div>
+    <div>
+        Sign-In
+        <input id="signin-username" type="text" placeholder="Username" name="username"/>
+        <input id="signin-password" type="password" placeholder="Password" name="password"/>
+        <button onclick="signin()">Sign-IN</button>
+    </div>
+    <div>
+        User Information: 
+        <div id="information"></div>
+        <button onclick="getUserInfo()">ME</button>
+    </div>
+    <div>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
