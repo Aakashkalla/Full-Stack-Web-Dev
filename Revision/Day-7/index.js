@@ -1,12 +1,15 @@
+require('dotenv').config();
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = "jjajhad72798ybdabdajh";
+const bcrypt = require('bcrypt');
+const JWT_SECRET = `${process.env.JWT_SECRET}`;
 const {UserModel, TodoModel} = require('./db');
 const mongoose = require('mongoose');
+const { z } = require('zod')
 const app = express();
 
 async function connect(){
-    await mongoose.connect('mongodb+srv://aakashpradeepkalla:UNeXgBCnpWJX52Jj@cluster0.e8moafn.mongodb.net/todo-app-db');
+    await mongoose.connect(`${process.env.DB_URL}`);
     console.log("CONNECTED WITH DB");
 }
 connect();
@@ -14,19 +17,48 @@ connect();
 app.use(express.json());
 
 app.post('/signup', async (req,res)=>{
+    //Adding Input Validation (Using Zod)
+    const requiredBody = z.object({
+        email: z.email(),
+        password : z.string().min(3).max(30),
+        name : z.string().min(3).max(100)
+    });
+    // const parsedData = requiredBody.parse(req.body);
+    const parsedDataWithSuccess = requiredBody.safeParse(req.body);
+
+    if(!parsedDataWithSuccess.success){
+        res.json({
+            message:"Incorrect Format",
+            error : parsedDataWithSuccess.error
+        })  
+        return
+    }
+
     const email = req.body.email;
     const password = req.body.password;
     const name = req.body.name;
 
-    await UserModel.create({
-        email : email,
-        password : password,
-        name : name
-    });
+    let thrownError = false;
+    try{
+        const hashedPassword = await bcrypt.hash(password, 7);
 
-    res.json({
-        message : "You have succesfully Signed Up"
-    })
+        await UserModel.create({
+            email : email,
+            password : hashedPassword,
+            name : name
+        });
+    }catch(e){
+        res.json({
+            message : "User Already Exists"
+        })
+        thrownError = true;
+    }
+
+    if(!thrownError){
+        res.json({
+            message : "You have succesfully Signed Up"
+        })
+    }
 });
 
 app.post('/login', async (req,res)=>{
@@ -35,10 +67,17 @@ app.post('/login', async (req,res)=>{
 
     const user = await UserModel.findOne({
         email : email,
-        password: password
     })
 
-    if(user){
+    if(!user){
+        res.status(403).json({
+            message : 'User not found'
+        })
+        return;
+    }
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if(passwordMatch){
         const token = jwt.sign({
             id : user._id
         }, JWT_SECRET)
@@ -50,7 +89,6 @@ app.post('/login', async (req,res)=>{
             message : "Invalid Username or Password"
         })
     }
-
 });
 
 function auth(req,res,next){
@@ -87,8 +125,7 @@ app.get('/todos', auth, async (req,res)=>{
         userId : userId
     })
     res.json({
-        tile : todos[0].title,
-        done : todos[0].done
+        todos : todos
     })
 });
 
