@@ -27,3 +27,7 @@ async function getUserInfo(){
     });
     document.getElementById("information").innerHTML = `Username : ${response.data.username}, Password : ${response.data.password}`
 }
+
+function logout(){
+    localStorage.removeItem("token");
+}
