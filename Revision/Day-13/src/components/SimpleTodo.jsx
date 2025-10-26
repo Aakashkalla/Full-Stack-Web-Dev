@@ -1,0 +1,19 @@
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { removeTodo } from '../features/todo/todoSlice'
+const SimpleTodo = () => {
+    const todos = useSelector(state => state.todos)
+    const dispatch = useDispatch();
+  return (
+    <>
+        <h2>Todo</h2>
+        {todos.map(todo=>(
+            <li key={todo.id}>{todo.text}
+            <button onClick={()=>dispatch(removeTodo(todo.id))}  >Remove</button>
+            </li>
+        ))}
+    </>
+  )
+}
+
+export default SimpleTodo
