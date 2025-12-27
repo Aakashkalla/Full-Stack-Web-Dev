@@ -9,13 +9,13 @@ const handler = NextAuth({
       username: { label: "Username", type: "text", placeholder: "Username" },
       password: { label: "Password", type: "password" }
     },
-    async authorize(credentials, req) {
+    async authorize(credentials : any, req : any) {
         // DB Call to check for credentials, 
         const username = credentials?.username;
         const password = credentials?.password;
 
         const user = {
-            
+           
         }
     }
   })
