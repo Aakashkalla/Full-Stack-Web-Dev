@@ -1,5 +1,5 @@
 const Hero = () => {
-  return (
+    return (
     <div className="my-40 justify-cente flex items-center w-full flex-col">
         <h1 className="text-5xl font-bold tracking-tight max-w-2xl text-center leading-tight bg-linear-to-b from-neutral-50 to bg-neutral-500 bg-clip-text text-transparent">
             Unleash the Power of intutive finance
