@@ -60,7 +60,7 @@ const childVariants = {
     }
 }
 const page = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <>
         <motion.div
@@ -71,7 +71,7 @@ const page = () => {
                 <h1 className="text-xl font-semibold text-white flex gap-2">
                     Motion Variants 
                     <button onClick={()=>setIsOpen(!isOpen)} className="text-white">
-                        {isOpen ? <ChevronDown/> : <ChevronUp/>}
+                        {isOpen ? <ChevronUp/> : <ChevronDown/>}
                     </button>
                 </h1>
                 <motion.div variants={linksVariant} className="flex flex-col">
