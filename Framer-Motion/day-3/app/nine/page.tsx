@@ -15,10 +15,10 @@ const page = () => {
                 y : [300,300,250,250,300]
             }}
             transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut"
+                duration: 8,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut"
             }}
             className="blur-3xl bg-[#80ed99]/20 w-40 h-40 rounded-full absolute"
             />
